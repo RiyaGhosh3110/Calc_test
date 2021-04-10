@@ -6,21 +6,17 @@ pipeline {
     stages {
         stage('Step 1 Git') {
             steps {
-                git 'https://github.com/RiyaGhosh3110/DevOps_Scientific_Calculator.git'
-                //sh './mvnw clean compile'
+                git 'https://github.com/RiyaGhosh3110/Calc_test.git'
             }
         }
          stage('Step 2 Maven') {
             steps {
-                //git 'https://github.com/ParijatMoulik/Scientific_Calculator.git'
-//                 sh 'mvn clean compile'
                  sh 'mvn clean install'
             }
         }
          stage('Step 3 Test')
          {
              steps {
-                 //git 'https://github.com/ParijatMoulik/Scientific_Calculator.git'
                  sh 'mvn test'
              }
              post{
@@ -34,7 +30,7 @@ pipeline {
           {
               steps {
                   script {
-                    imageName = docker.build "riyaghosh3110/calculator_devops:latest"
+                    imageName = docker.build "riyaghosh3110/test:latest"
                     }
               }
           }
